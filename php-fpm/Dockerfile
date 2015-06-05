@@ -9,8 +9,8 @@ RUN rpm -Uvh https://mirror.webtatic.com/yum/el6/latest.rpm
 RUN yum -y install php55w-fpm \
                    php55w-mysql \
                    php55w-cli  \
-                   php-pear  \
-                   php-devel \
+                   php55w-pear  \
+                   php55w-devel \
                    httpd-devel \
                    pcre-devel \
                    gcc \
@@ -19,7 +19,7 @@ RUN yum -y install php55w-fpm \
                    vim \
                    php55w-gd \
                    php55w-intl \
-                   php55w-pear 
+                   php55w-pear \ 
                    php55w-imagick \
                    php55w-imap \
                    php55w-mcrypt \
