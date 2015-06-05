@@ -1,0 +1,43 @@
+symfony:
+  build: .  
+  volumes:
+    - .:/var/www
+  volumes_from: 
+    - shared
+
+nginx:
+  build: atamos/nginx:2
+  ports:
+    - 8080:8080
+  links:
+    - php 
+    - mysql
+  volumes_from:
+    - symfony
+
+php:
+  image: atamos/php-fpm:2
+  volumes_from:
+    - symfony
+
+mysql:
+  image: mysql
+  volumes_from:
+    - mysqldata
+  environment:
+    MYSQL_DATABASE: symfony
+    MYSQL_USER: symfony
+    MYSQL_PASSWORD: symfony
+    MYSQL_ALLOW_EMPTY_PASSWORD: yes
+
+shared:
+  image: busybox
+  volumes: 
+    - /var/www/app/logs
+    - /var/www/app/cache
+
+mysqldata:
+   image: busybox
+   volumes:
+     - /var/lib/mysql
+  
