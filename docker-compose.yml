@@ -6,7 +6,7 @@ symfony:
     - shared
 
 nginx:
-  build: atamos/nginx:2
+  image: atamos/nginx:2
   ports:
     - 8080:8080
   links:
@@ -33,11 +33,11 @@ mysql:
 shared:
   image: busybox
   volumes: 
-    - /var/www/app/logs
-    - /var/www/app/cache
+    - /var/symfony/cache
+    - /var/symfony/logs
 
 mysqldata:
    image: busybox
    volumes:
-     - /var/lib/mysql
+     - /var/lib/mysql2
   

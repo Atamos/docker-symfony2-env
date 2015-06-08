@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 RUN chmod +x /usr/local/bin/composer
+RUN /usr/local/bin/composer self-update
 
+ENV COMPOSER_HOME /root/composer
 
 RUN apt-get install php5-curl 
 
