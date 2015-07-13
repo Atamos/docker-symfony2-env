@@ -58,6 +58,7 @@ COPY php.ini /etc/php.ini
 RUN useradd www-data
 RUN usermod -u 1000 www-data
 
+RUN yum install php55w-mbstring -y 
 
 EXPOSE 9000
 
